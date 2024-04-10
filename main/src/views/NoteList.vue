@@ -1,21 +1,14 @@
 <template>
-    <div>
+    <div class="container">
+        <h2 class="title">All Notes</h2>
         <ul class="notes">
             <li v-for="note in notes" :key="note.id" :note="note.item">
                 <RouterLink class="notes-item" :to="{ name: 'EditNote', params: { id: note.id } }">
                     <div class="notes-card">
-                        <h1>
-                            Title: {{ note.item.title }}
-                        </h1>
-                        <p>
-                            Content: {{ note.item.content }}
-                        </p>
-                        <p>Category: {{ note.item.category }}</p>
-                        <p>
-                            Created at: {{ note.item.created_at }}
-                        </p>
+                        <NoteCard :id="note.item.id" :title="note.item.title" :content="note.item.content"
+                            :category="note.item.category" :created_at="note.item.created_at"
+                            :updated_at="note.item.updated_at" />
                     </div>
-
                 </RouterLink>
             </li>
 
@@ -28,8 +21,13 @@
 </template>
 
 <script>
+import NoteCard from '@/components/NoteCard.vue';
+
 export default {
     name: 'NotesList',
+    components: {
+        NoteCard
+    },
 
     created() {
         // Fetch notes from localStorage
@@ -44,35 +42,31 @@ export default {
             return this.$store.state.notes;
         }
     },
-
-
 }
-
-
 </script>
 
 <style lang="scss" scoped>
+.title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.nav-link {
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+
 .notes {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    align-items: center;
     list-style: none;
+    margin-bottom: 40px;
 
     &-item {
         text-decoration: none;
-        color: navy;
-    }
-
-    &-card {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        max-width: 100%;
-        list-style: none;
-        padding: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
     }
 
     &-empty {
@@ -83,4 +77,4 @@ export default {
         margin: 0 auto;
     }
 }
-</style>
+</style>../components/AddNote.vue
