@@ -1,9 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import NoteList from '../views/NoteList.vue'
 import EditNote from '../views/EditNote.vue'
-import AddNote from '@/views/AddNote.vue'
-
-// Create a new router instance.
+import AddNote from '@/components/AddNote.vue'
 
 const routes = [
   { path: '/', name: 'NoteList', component: NoteList },
