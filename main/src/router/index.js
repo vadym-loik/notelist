@@ -1,22 +1,21 @@
-// import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+import NoteList from '../views/NoteList.vue'
+import EditNote from '../views/EditNote.vue'
+import AddNote from '@/views/AddNote.vue'
 
-// const router = createRouter({
-//   history: createWebHistory(import.meta.env.BASE_URL),
-//   routes: [
-//     {
-//       path: '/',
-//       name: 'home',
-//       component:
-//     },
-//     {
-//       path: '/about',
-//       name: 'about',
-//       // route level code-splitting
-//       // this generates a separate chunk (About.[hash].js) for this route
-//       // which is lazy-loaded when the route is visited.
-//       component:
-//     }
-//   ]
-// })
+// Create a new router instance.
 
-// export default router
+const routes = [
+  { path: '/', name: 'NoteList', component: NoteList },
+  { path: '/add', name: 'AddNote', component: AddNote },
+  { path: '/note/:id', name: 'EditNote', component: EditNote, props: true },
+  // Redirect any unmatched routes to the NoteList view.
+  { path: '/:pathMatch(.*)', redirect: { name: 'NoteList' } }
+]
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes
+})
+
+export default router
