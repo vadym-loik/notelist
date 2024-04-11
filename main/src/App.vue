@@ -52,7 +52,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 0 10px;
 }
 
 .header {
@@ -60,9 +60,9 @@ export default {
 
   &-wrap {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     align-items: center;
-
+    margin-bottom: 2rem;
   }
 
   &-wrap__link {
@@ -72,14 +72,13 @@ export default {
 
   &-nav {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
   }
 }
 
 .title {
   text-align: center;
-
 }
 
 .main {
@@ -90,7 +89,6 @@ export default {
   display: flex;
   gap: 1rem;
   align-items: center;
-
 
   &-link {
     text-decoration: none;
@@ -111,5 +109,22 @@ export default {
 #nav a.router-link-exact-active {
   background-color: #42b983;
   color: #fff;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin: 0 auto;
+  }
+
+  .header-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .header-wrap {
+    margin: 0;
+  }
 }
 </style>

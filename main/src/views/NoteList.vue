@@ -95,6 +95,8 @@ export default {
 
 .notes {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
     list-style: none;
@@ -110,6 +112,13 @@ export default {
         border: 1px solid #ccc;
         border-radius: 4px;
         margin: 0 auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .notes {
+        gap: 2rem;
+        align-items: baseline;
     }
 }
 </style>

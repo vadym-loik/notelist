@@ -29,10 +29,12 @@
             </div>
         </form>
 
-        <NoteCard class="note-card" v-else :id="note.id" :title="note.title" :content="note.content"
-            :category="note.category" :created_at="note.created_at" :updated_at="note.updated_at" />
+        <div class="card-wrap" v-else>
+            <NoteCard class="note-card" :id="note.id" :title="note.title" :content="note.content"
+                :category="note.category" :created_at="note.created_at" :updated_at="note.updated_at" />
+            <button class="edit-btn" v-if="!editing" @click="toggle">Edit Note</button>
+        </div>
 
-        <button class="edit-btn" v-if="!editing" @click="toggle">Edit Note</button>
 
     </div>
 </template>
@@ -160,11 +162,11 @@ export default {
     }
 
     &-update {
-        background-color: #00ff00;
+        background-color: #65bf65;
     }
 
     &-delete {
-        background-color: #ff0000;
+        background-color: #dc7a7a;
     }
 }
 
@@ -176,5 +178,19 @@ export default {
     border-radius: 20px;
     cursor: pointer;
     margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .card-wrap {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .note-card {
+        max-width: 70%;
+        margin: 0;
+    }
 }
 </style>

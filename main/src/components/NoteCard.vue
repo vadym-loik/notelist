@@ -36,8 +36,7 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 250px;
-
+    max-width: 100%;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
@@ -74,6 +73,12 @@ export default {
     &-createdAt {
         font-size: 16px;
         color: #ccc;
+    }
+}
+
+@media (min-width: 768px) {
+    .note {
+        max-width: 250px;
     }
 }
 </style>
